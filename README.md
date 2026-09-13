@@ -46,6 +46,30 @@ change the fowllowing two  aws config files with your credentials
 **You Need To Install Terraform First**  
 in the root folder **service_dicovery_with_concul**, do the following steps  
 
+#### Update the SSH Key in `key.tf`
+
+Before running Terraform, update the SSH public key path in `key.tf` to match your own local key.
+
+Current configuration:
+
+```hcl
+resource "aws_key_pair" "consul-demo" {
+  key_name = "${local.name_prefix}-key"
+
+  public_key = file(
+    pathexpand("~/Desktop/aws_files/hein_linux_rsa_key.pub")
+  )
+
+  tags = merge(
+    local.common_tags,
+    {
+      Name = "${local.name_prefix}-key"
+    }
+  )
+}
+```
+**Change this path "~/Desktop/aws_files/hein_linux_rsa_key.pub" with your key path**  
+
 Deploy:
 
 ```bash
