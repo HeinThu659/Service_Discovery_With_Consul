@@ -50,8 +50,8 @@ Deploy:
 
 ```bash
 terraform init
-terraform plan -var-file={dev.tfvars}
-terraform apply -var-file={dev.tfvars} -auto-approve
+terraform plan -var-file=dev.tfvars
+terraform apply -var-file=dev.tfvars -auto-approve
 ```
 **{dev.tfvars}** is the file if you want to change variables, example file name here is  dev.tfvars.  
 you can change later  
